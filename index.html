@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мое Портфолио</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">NZ</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Обо мне</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#info">Информация</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Первый блок - Герой -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Никита</h1>
+                    <p class="hero-description">
+                        Я веб-дизайнер, создающий целостные цифровые продукты — от концепции и графики в Figma и Photoshop до чистой и функциональной верстки на HTML, CSS и JavaScript. Мой подход основан на внимании к деталям и стремлении к визуальному совершенству, будь то дизайн лендинга, сложного интерфейса или монтаж видео в Adobe Premier. Вне работы заряжаюсь энергией в спортзале и черпаю вдохновение в мире видеоигр.
+                    </p>
+                    <button class="cta-button">Связаться со мной</button>
+                </div>
+                <div class="hero-image">
+                    <img src="./img/profile_pic.jpg" alt="Мое фото" class="profile-photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Второй блок - Портфолио -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Мое Портфолио</h2>
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="photoshop">Adobe Photoshop</button>
+                <button class="filter-btn" data-filter="illustrator">Adobe Illustrator</button>
+                <button class="filter-btn" data-filter="effects">Adobe After Effects</button>
+                <button class="filter-btn" data-filter="premier">Adobe Premier Pro</button>
+                <button class="filter-btn" data-filter="indesign">Adobe InDesign</button>
+                <button class="filter-btn" data-filter="blender">Blender</button>
+                <button class="filter-btn" data-filter="figma">Figma</button>
+                <button class="filter-btn" data-filter="ui/ux_design">UI/UX Design</button>
+            </div>
+            <div class="portfolio-grid-wrapper">
+                <div class="portfolio-grid grid-mode" >
+                    <div class="portfolio-item" data-category="photoshop">
+                        <img src="./img/musorka.png" alt="Работа 1">
+                    </div>
+                    <div class="portfolio-item" data-category="photoshop">
+                        <img src="./img/fractal.jpg" alt="Работа 2">
+                    </div>
+                    <div class="portfolio-item" data-category="photoshop">
+                        <img src="./img/iPhone_Black.png" alt="Работа 3">
+                    </div>
+                    <div class="portfolio-item" data-category="illustrator">
+                        <img src="./img/sharik.png" alt="Работа 4">
+                    </div>
+                    <div class="portfolio-item" data-category="illustrator">
+                        <img src="./img/vimeo.png" alt="Работа 5">
+                    </div>
+                    <div class="portfolio-item" data-category="illustrator">
+                        <img src="./img/planet.png" alt="Работа 6">
+                    </div>
+                    <div class="portfolio-item" data-category="illustrator">
+                        <img src="./img/buklet1.png" alt="Работа 7">
+                    </div>
+                    <div class="portfolio-item" data-category="effects">
+                        <img src="./img/dog_ball.gif" alt="Работа 8">
+                    </div>
+                    <div class="portfolio-item" data-category="ui/ux_design">
+                        <img src="./img/site1.png" alt="Работа 9">
+                    </div>
+                    <div class="portfolio-item" data-category="ui/ux_design">
+                        <img src="./img/site2.png" alt="Работа 10">
+                    </div>
+                    <div class="portfolio-item" data-category="ui/ux_design">
+                        <img src="./img/site3.png" alt="Работа 11">
+                    </div>
+                    <div class="portfolio-item" data-category="ui/ux_design">
+                        <img src="./img/site4.png" alt="Работа 12">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Третий блок - Информация -->
+    <section class="info" id="info">
+        <div class="container">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="info-content">
+                <div class="info-text">
+                    <h3>Мой путь в дизайне</h3>
+                        <p>
+                        На данный момент я являюсь студентом, получаю профильное образование в сфере веб-дизайна и активно применяю эти знания на практике. Каждый день для меня — это возможность улучшить свои навыки и узнать что-то новое.
+                        </p>
+                        <p>
+                            Уже сейчас я освоил полный цикл создания digital-продуктов: от проработки макетов и графики в Figma, Photoshop и Illustrator до их воплощения с помощью чистой и адаптивной верстки на HTML, CSS и JavaScript. Такой подход позволяет мне видеть проект целиком и ответственно подходить к качеству на каждом этапе.
+                        </p>
+                        <p>
+                            Мой опыт охватывает различные ниши, что развивает гибкость мышления, а врожденное внимание к деталям и перфекционизм помогают создавать результаты, которые радуют и визуально, и технически.</p>
+                        </p>
+                    <div class="skills">
+                        <h4>Навыки:</h4>
+                        <ul>
+                            <li>Adobe Photoshop</li>
+                            <li>Adobe Illustrator</li>
+                            <li>Adobe After Effects</li>
+                            <li>Adobe Premier Pro</li>
+                            <li>Adobe InDesign</li>
+                            <li>Blender</li>
+                            <li>Figma</li>
+                            <li>UI/UX Design</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-gallery">
+                    <img src="./img/hero1.jpg" alt="Фото 1" class="info-photo">
+                    <img src="./img/hero4.jpg" alt="Фото 2" class="info-photo">
+                    <img src="./img/hero3.jpg" alt="Фото 3" class="info-photo">
+                    <img src="./img/3.jpg" alt="Фото 4" class="info-photo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Давайте работать вместе!</h3>
+                    <p>Готов обсудить ваш проект и предложить лучшее решение</p>
+                </div>
+                <div class="footer-contacts">
+                    <div class="contact-item">
+                        <strong>Телефон:</strong>
+                        <span>+7 (982) 460-45-78</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <span>nikita.zavodchikov@yandex.ru</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Соцсети:</strong>
+                        <div class="social-links">
+                            <a href="https://vk.com/yasnobruh">VK</a>
+                            <a href="https://t.me/yasnoBruhhh">Telegram</a>
+                            <a href="https://www.instagram.com/yasnobruh?igsh=MWM5bDZud2F6eDE3Ng%3D%3D&utm_source=qr">Instagram</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NZ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
