@@ -36,7 +36,7 @@
                         </p>
                     </div>
                     <div class="hero-image">
-                        <img src="./img/profile_pic.jpg" alt="Портрет Никиты" class="profile-photo">
+                        <img src="./img/profile_pic.jpg" alt="Портрет Никиты" class="profile-photo" decoding="async" fetchpriority="high">
                     </div>
                 </div>
             </div>
@@ -44,79 +44,73 @@
 
         <section class="portfolio" id="portfolio">
             <div class="container">
-                <h2 class="section-title">Мое Портфолио</h2>
+                <h2 class="section-title">Портфолио</h2>
                 <div class="portfolio-filters">
-                    <button class="filter-btn active" data-filter="illustrator">Adobe Illustrator</button>
+                    <button class="filter-btn active" data-filter="ui-ux-design">UI/UX Design</button>
+                    <button class="filter-btn" data-filter="illustrator">Adobe Illustrator</button>
                     <button class="filter-btn" data-filter="effects">Adobe After Effects</button>
-                    <button class="filter-btn" data-filter="ui-ux-design">UI/UX Design</button>
                 </div>
                 <div class="portfolio-grid-wrapper">
                     <div class="portfolio-grid">
+                        <div class="portfolio-item portfolio-item-project" data-category="ui-ux-design" data-images="./img/uiux-robin-full.png" data-title="Robin Williams Portfolio">
+                            <button class="portfolio-card" type="button" aria-label="Открыть проект Robin Williams Portfolio">
+                                <img src="./img/uiux-robin-cover.jpg" alt="Лендинг Robin Williams" loading="lazy" decoding="async" fetchpriority="low">
+                                <span class="portfolio-card-overlay">
+                                    <span class="portfolio-card-title">Robin Williams Portfolio</span>
+                                    <span class="portfolio-card-meta">Открыть проект</span>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="portfolio-item portfolio-item-project" data-category="ui-ux-design" data-images="./img/uiux-solar-full.png" data-title="Solar System Landing">
+                            <button class="portfolio-card" type="button" aria-label="Открыть проект Solar System Landing">
+                                <img src="./img/uiux-solar-cover.jpg" alt="Лендинг Солнечная система" loading="lazy" decoding="async" fetchpriority="low">
+                                <span class="portfolio-card-overlay">
+                                    <span class="portfolio-card-title">Solar System Landing</span>
+                                    <span class="portfolio-card-meta">Открыть проект</span>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="portfolio-item portfolio-item-project" data-category="ui-ux-design" data-images="./img/uiux-sinuts-full.png" data-title="Sinuts Store">
+                            <button class="portfolio-card" type="button" aria-label="Открыть проект Sinuts Store">
+                                <img src="./img/uiux-sinuts-cover.jpg" alt="Лендинг Sinuts Store" loading="lazy" decoding="async" fetchpriority="low">
+                                <span class="portfolio-card-overlay">
+                                    <span class="portfolio-card-title">Sinuts Store</span>
+                                    <span class="portfolio-card-meta">Открыть проект</span>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="portfolio-item portfolio-item-project" data-category="ui-ux-design" data-images="./img/uiux-indexdrive-full.png" data-title="Index Drive Landing">
+                            <button class="portfolio-card" type="button" aria-label="Открыть проект Index Drive Landing">
+                                <img src="./img/uiux-indexdrive-cover.jpg" alt="Лендинг Index Drive" loading="lazy" decoding="async" fetchpriority="low">
+                                <span class="portfolio-card-overlay">
+                                    <span class="portfolio-card-title">Index Drive Landing</span>
+                                    <span class="portfolio-card-meta">Открыть проект</span>
+                                </span>
+                            </button>
+                        </div>
                         <div class="portfolio-item" data-category="illustrator" data-images="./img/sharik.png" data-title="Illustration Concept">
                             <button class="portfolio-card" type="button" aria-label="Открыть работу Illustration Concept">
-                                <img src="./img/sharik.png" alt="Иллюстрация с шаром" loading="lazy">
+                                <img src="./img/sharik.png" alt="Иллюстрация с шаром" loading="lazy" decoding="async" fetchpriority="low">
                                 <span class="portfolio-card-overlay">
                                     <span class="portfolio-card-title">Illustration Concept</span>
                                     <span class="portfolio-card-meta">Открыть крупнее</span>
                                 </span>
                             </button>
                         </div>
-                        <div class="portfolio-item" data-category="illustrator" data-images="./img/vimeo.png" data-title="Vimeo Artwork">
-                            <button class="portfolio-card" type="button" aria-label="Открыть работу Vimeo Artwork">
-                                <img src="./img/vimeo.png" alt="Иллюстрация Vimeo" loading="lazy">
-                                <span class="portfolio-card-overlay">
-                                    <span class="portfolio-card-title">Vimeo Artwork</span>
-                                    <span class="portfolio-card-meta">Открыть крупнее</span>
-                                </span>
-                            </button>
-                        </div>
                         <div class="portfolio-item" data-category="illustrator" data-images="./img/planet.png" data-title="Planet Scene">
                             <button class="portfolio-card" type="button" aria-label="Открыть работу Planet Scene">
-                                <img src="./img/planet.png" alt="Иллюстрация с планетой" loading="lazy">
+                                <img src="./img/planet.png" alt="Иллюстрация с планетой" loading="lazy" decoding="async" fetchpriority="low">
                                 <span class="portfolio-card-overlay">
                                     <span class="portfolio-card-title">Planet Scene</span>
                                     <span class="portfolio-card-meta">Открыть крупнее</span>
                                 </span>
                             </button>
                         </div>
-                        <div class="portfolio-item" data-category="illustrator" data-images="./img/buklet1.png" data-title="Booklet Illustration">
-                            <button class="portfolio-card" type="button" aria-label="Открыть работу Booklet Illustration">
-                                <img src="./img/buklet1.png" alt="Иллюстрация буклета" loading="lazy">
-                                <span class="portfolio-card-overlay">
-                                    <span class="portfolio-card-title">Booklet Illustration</span>
-                                    <span class="portfolio-card-meta">Открыть крупнее</span>
-                                </span>
-                            </button>
-                        </div>
                         <div class="portfolio-item" data-category="effects" data-images="./img/dog_ball.gif" data-title="Motion Loop">
                             <button class="portfolio-card" type="button" aria-label="Открыть работу Motion Loop">
-                                <img src="./img/dog_ball.gif" alt="Motion-дизайн с мячом" loading="lazy">
+                                <img src="./img/dog_ball.gif" alt="Motion-дизайн с мячом" loading="lazy" decoding="async" fetchpriority="low">
                                 <span class="portfolio-card-overlay">
                                     <span class="portfolio-card-title">Motion Loop</span>
-                                    <span class="portfolio-card-meta">Открыть крупнее</span>
-                                </span>
-                            </button>
-                        </div>
-                        <div class="portfolio-item portfolio-item-project" data-category="ui-ux-design" data-images="./img/site1.png|./img/site2.png|./img/site3.png" data-title="Landing Project One">
-                            <button class="portfolio-card" type="button" aria-label="Открыть проект Landing Project One">
-                                <div class="project-preview project-preview-triple">
-                                    <img src="./img/site1.png" alt="Первый экран лендинга 1" loading="lazy">
-                                    <img src="./img/site2.png" alt="Второй экран лендинга 1" loading="lazy">
-                                    <img src="./img/site3.png" alt="Третий экран лендинга 1" loading="lazy">
-                                </div>
-                                <span class="portfolio-card-overlay">
-                                    <span class="portfolio-card-title">Landing Project One</span>
-                                    <span class="portfolio-card-meta">3 экрана в одном проекте</span>
-                                </span>
-                            </button>
-                        </div>
-                        <div class="portfolio-item portfolio-item-project" data-category="ui-ux-design" data-images="./img/site4.png" data-title="Landing Project Two">
-                            <button class="portfolio-card" type="button" aria-label="Открыть проект Landing Project Two">
-                                <div class="project-preview project-preview-single">
-                                    <img src="./img/site4.png" alt="Концепт лендинга 4" loading="lazy">
-                                </div>
-                                <span class="portfolio-card-overlay">
-                                    <span class="portfolio-card-title">Landing Project Two</span>
                                     <span class="portfolio-card-meta">Открыть крупнее</span>
                                 </span>
                             </button>
@@ -142,25 +136,25 @@
                             Мне особенно близок подход, в котором идея, подача и реализация выглядят как единое целое. Именно поэтому я уделяю внимание не только эстетике, но и общему впечатлению от продукта.
                         </p>
                         <div class="skills">
-                            <h4>Навыки:</h4>
+                            <h4>Навыки</h4>
                             <ul>
+                                <li class="skill-item" title="UI/UX Design">
+                                    <span class="skill-icon skill-icon-ui" aria-hidden="true">UX</span>
+                                </li>
                                 <li class="skill-item" title="Adobe Illustrator">
                                     <span class="skill-icon skill-icon-ai" aria-hidden="true">Ai</span>
                                 </li>
                                 <li class="skill-item" title="Adobe After Effects">
                                     <span class="skill-icon skill-icon-ae" aria-hidden="true">Ae</span>
                                 </li>
-                                <li class="skill-item" title="UI/UX Design">
-                                    <span class="skill-icon skill-icon-ui" aria-hidden="true">UX</span>
-                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="info-gallery">
-                        <img src="./img/hero1.jpg" alt="Фото 1" class="info-photo info-photo-large" loading="lazy">
-                        <img src="./img/hero4.jpg" alt="Фото 2" class="info-photo" loading="lazy">
-                        <img src="./img/hero3.jpg" alt="Фото 3" class="info-photo" loading="lazy">
-                        <img src="./img/3.jpg" alt="Фото 4" class="info-photo info-photo-wide" loading="lazy">
+                        <img src="./img/hero4.jpg" alt="Фото 1" class="info-photo info-photo-top" loading="lazy" decoding="async" fetchpriority="low">
+                        <img src="./img/hero1.jpg" alt="Фото 2" class="info-photo info-photo-left" loading="lazy" decoding="async" fetchpriority="low">
+                        <img src="./img/hero3.jpg" alt="Фото 3" class="info-photo info-photo-right" loading="lazy" decoding="async" fetchpriority="low">
+                        <img src="./img/hero2.jpg" alt="Фото 4" class="info-photo info-photo-bottom" loading="lazy" decoding="async" fetchpriority="low">
                     </div>
                 </div>
             </div>
@@ -217,15 +211,11 @@
         <div class="portfolio-modal-backdrop"></div>
         <div class="portfolio-modal-dialog" role="dialog" aria-modal="true" aria-label="Просмотр работы">
             <button class="portfolio-modal-close" type="button" aria-label="Закрыть просмотр">+</button>
-            <div class="portfolio-modal-content">
-                <button class="portfolio-modal-nav portfolio-modal-prev" type="button" aria-label="Предыдущий экран">&lsaquo;</button>
-                <figure class="portfolio-modal-figure">
-                    <img class="portfolio-modal-image" src="" alt="">
-                    <figcaption class="portfolio-modal-caption"></figcaption>
-                </figure>
-                <button class="portfolio-modal-nav portfolio-modal-next" type="button" aria-label="Следующий экран">&rsaquo;</button>
+            <div class="portfolio-modal-header">
+                <h3 class="portfolio-modal-title"></h3>
+                <p class="portfolio-modal-caption"></p>
             </div>
-            <div class="portfolio-modal-thumbs"></div>
+            <div class="portfolio-modal-scroll"></div>
         </div>
     </div>
 

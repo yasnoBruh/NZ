@@ -9,16 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.querySelector('.portfolio-modal');
     const modalBackdrop = document.querySelector('.portfolio-modal-backdrop');
     const modalClose = document.querySelector('.portfolio-modal-close');
-    const modalImage = document.querySelector('.portfolio-modal-image');
+    const modalTitle = document.querySelector('.portfolio-modal-title');
     const modalCaption = document.querySelector('.portfolio-modal-caption');
-    const modalThumbs = document.querySelector('.portfolio-modal-thumbs');
-    const modalPrev = document.querySelector('.portfolio-modal-prev');
-    const modalNext = document.querySelector('.portfolio-modal-next');
+    const modalScroll = document.querySelector('.portfolio-modal-scroll');
 
     let isAnimating = false;
-    let activeGallery = [];
-    let activeTitle = '';
-    let activeIndex = 0;
 
     function applyFilter(filterValue) {
         if (isAnimating) {
@@ -54,69 +49,46 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 90);
     }
 
-    function renderModalImage() {
-        if (!modalImage || !modalCaption || activeGallery.length === 0) {
-            return;
-        }
-
-        modalImage.src = activeGallery[activeIndex];
-        modalImage.alt = activeTitle;
-        modalCaption.textContent = activeGallery.length > 1
-            ? activeTitle + ' - экран ' + (activeIndex + 1) + ' из ' + activeGallery.length
-            : activeTitle;
-
-        if (modalPrev) {
-            modalPrev.classList.toggle('is-hidden', activeGallery.length < 2);
-        }
-
-        if (modalNext) {
-            modalNext.classList.toggle('is-hidden', activeGallery.length < 2);
-        }
-
-        if (modalThumbs) {
-            Array.from(modalThumbs.children).forEach(function(thumb, index) {
-                thumb.classList.toggle('is-active', index === activeIndex);
-            });
-        }
-    }
-
     function openModal(images, title) {
-        if (!modal || !modalImage || images.length === 0) {
+        if (!modal || !modalScroll || images.length === 0) {
             return;
         }
 
-        activeGallery = images;
-        activeTitle = title;
-        activeIndex = 0;
+        modalScroll.innerHTML = '';
 
-        if (modalThumbs) {
-            modalThumbs.innerHTML = '';
-
-            activeGallery.forEach(function(image, index) {
-                const thumbButton = document.createElement('button');
-                const thumbImage = document.createElement('img');
-
-                thumbButton.type = 'button';
-                thumbButton.className = 'portfolio-modal-thumb';
-                thumbButton.setAttribute('aria-label', 'Показать экран ' + (index + 1));
-
-                thumbImage.src = image;
-                thumbImage.alt = title + ' миниатюра ' + (index + 1);
-
-                thumbButton.appendChild(thumbImage);
-                thumbButton.addEventListener('click', function() {
-                    activeIndex = index;
-                    renderModalImage();
-                });
-
-                modalThumbs.appendChild(thumbButton);
-            });
+        if (modalTitle) {
+            modalTitle.textContent = title;
         }
 
-        renderModalImage();
+        if (modalCaption) {
+            modalCaption.textContent = images.length > 1
+                ? 'Полноразмерный просмотр проекта. Листай внутри окна, чтобы увидеть все экраны.'
+                : 'Полноразмерный просмотр работы.';
+        }
+
+        images.forEach(function(image, index) {
+            const frame = document.createElement('div');
+            const fullImage = document.createElement('img');
+
+            frame.className = 'portfolio-modal-image-frame';
+            fullImage.className = 'portfolio-modal-image';
+            fullImage.src = image;
+            fullImage.alt = title + ' экран ' + (index + 1);
+
+            frame.appendChild(fullImage);
+            modalScroll.appendChild(frame);
+        });
+
+        if (images.length > 1) {
+            const note = document.createElement('p');
+            note.className = 'portfolio-modal-scroll-note';
+            note.textContent = 'Экранов в проекте: ' + images.length;
+            modalScroll.appendChild(note);
+        }
+
         modal.classList.add('is-open');
         modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('modal-open');
     }
 
     function closeModal() {
@@ -126,28 +98,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden', 'true');
-        modalImage.src = '';
-        modalImage.alt = '';
-        activeGallery = [];
-        activeTitle = '';
-        activeIndex = 0;
-
-        if (modalThumbs) {
-            modalThumbs.innerHTML = '';
+        if (modalTitle) {
+            modalTitle.textContent = '';
+        }
+        if (modalCaption) {
+            modalCaption.textContent = '';
+        }
+        if (modalScroll) {
+            modalScroll.innerHTML = '';
+            modalScroll.scrollTop = 0;
         }
 
         if (!burger || !burger.classList.contains('active')) {
-            document.body.style.overflow = 'auto';
+            document.body.classList.remove('modal-open');
         }
-    }
-
-    function showNextImage(step) {
-        if (activeGallery.length < 2) {
-            return;
-        }
-
-        activeIndex = (activeIndex + step + activeGallery.length) % activeGallery.length;
-        renderModalImage();
     }
 
     filterButtons.forEach(function(button) {
@@ -252,18 +216,6 @@ document.addEventListener('DOMContentLoaded', function() {
         modalClose.addEventListener('click', closeModal);
     }
 
-    if (modalPrev) {
-        modalPrev.addEventListener('click', function() {
-            showNextImage(-1);
-        });
-    }
-
-    if (modalNext) {
-        modalNext.addEventListener('click', function() {
-            showNextImage(1);
-        });
-    }
-
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768 && burger && navMenu) {
             burger.classList.remove('active');
@@ -280,9 +232,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (window.scrollY > 120) {
-            header.style.background = 'rgba(13, 15, 14, 0.94)';
+            header.style.background = 'rgba(6, 6, 6, 0.96)';
         } else {
-            header.style.background = 'rgba(17, 19, 18, 0.86)';
+            header.style.background = 'rgba(10, 10, 10, 0.88)';
         }
     });
 
@@ -293,14 +245,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (event.key === 'Escape') {
             closeModal();
-        }
-
-        if (event.key === 'ArrowRight') {
-            showNextImage(1);
-        }
-
-        if (event.key === 'ArrowLeft') {
-            showNextImage(-1);
         }
     });
 
