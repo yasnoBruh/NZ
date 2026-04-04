@@ -220,13 +220,16 @@ footer {
 }
 
 .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
     gap: 1rem;
 }
 
 .portfolio-item {
-    grid-column: span 4;
+    flex: 0 1 calc(33.333% - 0.7rem);
+    max-width: calc(33.333% - 0.7rem);
     border-radius: 24px;
     background: transparent;
     opacity: 1;
@@ -304,11 +307,16 @@ footer {
 }
 
 .portfolio-item-project {
-    grid-column: span 6;
+    flex-basis: calc(50% - 0.5rem);
+    max-width: calc(50% - 0.5rem);
 }
 
 .portfolio-item-project .portfolio-card {
     background: #050505;
+}
+
+.portfolio-item-project[data-title="Sinuts Store"] .portfolio-card {
+    background: #e7d0bf;
 }
 
 .portfolio-item-project .portfolio-card > img {
@@ -689,11 +697,13 @@ body.modal-open {
     }
 
     .portfolio-item {
-        grid-column: span 6;
+        flex-basis: calc(50% - 0.5rem);
+        max-width: calc(50% - 0.5rem);
     }
 
     .portfolio-item-project {
-        grid-column: span 6;
+        flex-basis: calc(50% - 0.5rem);
+        max-width: calc(50% - 0.5rem);
     }
 
     .info-content,
@@ -769,7 +779,8 @@ body.modal-open {
     }
 
     .portfolio-item {
-        grid-column: 1 / -1;
+        flex-basis: 100%;
+        max-width: 100%;
     }
 
     .info-gallery {
