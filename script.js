@@ -177,6 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const isOpen = this.classList.contains('active');
             this.setAttribute('aria-expanded', String(isOpen));
             this.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+            if (header) {
+                header.classList.toggle('menu-open', isOpen);
+            }
             document.body.style.overflow = isOpen ? 'hidden' : 'auto';
         });
     }
@@ -193,6 +196,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 navMenu.classList.remove('active');
             }
 
+            if (header) {
+                header.classList.remove('menu-open');
+            }
+
             document.body.style.overflow = 'auto';
         });
     });
@@ -203,6 +210,9 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('active');
             burger.setAttribute('aria-expanded', 'false');
             burger.setAttribute('aria-label', 'Открыть меню');
+            if (header) {
+                header.classList.remove('menu-open');
+            }
             document.body.style.overflow = 'auto';
         }
     });
@@ -236,6 +246,9 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('active');
             burger.setAttribute('aria-expanded', 'false');
             burger.setAttribute('aria-label', 'Открыть меню');
+            if (header) {
+                header.classList.remove('menu-open');
+            }
             document.body.style.overflow = 'auto';
         }
 

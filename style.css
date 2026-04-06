@@ -94,19 +94,41 @@ footer {
 .burger {
     display: none;
     justify-self: end;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     gap: 5px;
+    width: 48px;
+    height: 48px;
     padding: 0;
-    border: 0;
-    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
     cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .burger span {
     width: 26px;
     height: 2px;
     background: var(--text);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 999px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+}
+
+.burger:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.burger.active {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.24);
+}
+
+.nav-menu-brand {
+    display: none;
 }
 
 .hero {
@@ -460,8 +482,8 @@ footer {
 }
 
 .info-gallery {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: minmax(0, 0.7fr) minmax(0, 1.3fr);
     gap: 1rem;
     height: var(--info-gallery-height, auto);
     max-height: var(--info-gallery-height, none);
@@ -479,13 +501,14 @@ footer {
 }
 
 .info-photo-top {
-    flex: 0 0 auto;
-    aspect-ratio: 16 / 9;
+    min-height: 0;
+    height: 100%;
+    object-position: center;
 }
 
 .info-photo-tall {
-    flex: 1 1 auto;
     min-height: 0;
+    height: 100%;
     object-position: center top;
 }
 
@@ -706,9 +729,17 @@ body.modal-open {
 }
 
 @media (max-width: 768px) {
+    .header.menu-open {
+        background: transparent;
+        border-bottom-color: transparent;
+        backdrop-filter: none;
+        box-shadow: none;
+    }
+
     .nav {
         grid-template-columns: auto 1fr auto;
         min-height: 74px;
+        position: relative;
     }
 
     .logo {
@@ -719,20 +750,69 @@ body.modal-open {
     .nav-menu {
         display: none;
         position: fixed;
-        inset: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 999;
+        padding: 88px 16px 16px;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        background: rgba(17, 19, 18, 0.96);
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 0.75rem;
+        background: rgba(0, 0, 0, 0.74);
+        backdrop-filter: blur(8px);
+    }
+
+    .nav-menu-brand {
+        display: none;
+        position: fixed;
+        top: 25px;
+        left: 50%;
+        z-index: 1000;
+        transform: translateX(-50%);
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        color: var(--text);
+        pointer-events: none;
+    }
+
+    .header.menu-open .nav-menu-brand {
+        display: block;
     }
 
     .nav-menu.active {
         display: flex;
     }
 
+    .nav-menu li {
+        width: min(220px, calc(100vw - 32px));
+        margin-left: auto;
+    }
+
     .nav-menu a {
-        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 0.85rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        background: rgba(12, 12, 12, 0.96);
+        box-shadow: 0 18px 32px rgba(0, 0, 0, 0.22);
+        color: var(--text);
+        font-size: 0.96rem;
+        letter-spacing: 0.01em;
+        backdrop-filter: blur(16px);
+    }
+
+    .nav-menu a:hover {
+        color: var(--text);
+        background: rgba(24, 24, 24, 0.96);
+        border-color: rgba(255, 255, 255, 0.18);
     }
 
     .burger {
@@ -747,6 +827,7 @@ body.modal-open {
 
     .burger.active span:nth-child(2) {
         opacity: 0;
+        width: 20px;
     }
 
     .burger.active span:nth-child(3) {
@@ -773,6 +854,7 @@ body.modal-open {
     }
 
     .info-gallery {
+        grid-template-rows: minmax(0, 0.7fr) minmax(0, 1.3fr);
         height: auto;
         max-height: none;
         min-height: auto;
@@ -830,6 +912,8 @@ body.modal-open {
     }
 
     .info-gallery {
+        display: flex;
+        flex-direction: column;
         height: auto;
         max-height: none;
         gap: 0.8rem;
@@ -837,10 +921,12 @@ body.modal-open {
 
     .info-photo-top {
         aspect-ratio: 16 / 9;
+        height: auto;
     }
 
     .info-photo-tall {
         aspect-ratio: 4 / 5;
+        height: auto;
     }
 
     .footer {
