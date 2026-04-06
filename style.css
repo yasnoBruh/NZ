@@ -159,14 +159,16 @@ footer {
 .hero-image {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .profile-photo {
-    width: 100%;
-    max-width: 400px;
+    width: min(100%, 560px);
+    max-height: 660px;
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
     object-fit: cover;
+    object-position: center top;
 }
 
 .portfolio,
