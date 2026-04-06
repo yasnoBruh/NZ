@@ -319,6 +319,10 @@ footer {
     background: #e7d0bf;
 }
 
+.portfolio-item-project[data-title="EasyBuy Landing"] .portfolio-card {
+    background: #f2f0ec;
+}
+
 .portfolio-item-project .portfolio-card > img {
     aspect-ratio: 16 / 10;
     object-fit: contain;

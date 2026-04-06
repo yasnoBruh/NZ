@@ -74,6 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
             fullImage.className = 'portfolio-modal-image';
             fullImage.src = image;
             fullImage.alt = title + ' экран ' + (index + 1);
+            fullImage.loading = 'lazy';
+            fullImage.decoding = 'async';
 
             frame.appendChild(fullImage);
             modalScroll.appendChild(frame);
@@ -125,11 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
             applyFilter(filterValue);
         });
     });
-
-    const activeFilter = document.querySelector('.filter-btn.active');
-    if (activeFilter) {
-        applyFilter(activeFilter.getAttribute('data-filter'));
-    }
 
     portfolioCards.forEach(function(card) {
         card.addEventListener('click', function() {
