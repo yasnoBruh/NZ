@@ -271,25 +271,42 @@ footer {
     position: relative;
     width: 100%;
     overflow: hidden;
-    border: 1px solid var(--border);
+    border: 0;
     border-radius: 24px;
-    background: #0f0f0f;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18);
     cursor: pointer;
     padding: 0;
     text-align: left;
     color: inherit;
 }
 
+.portfolio-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+
 .portfolio-card::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(10, 10, 10, 0.02) 20%, rgba(10, 10, 10, 0.88) 100%);
+    z-index: 1;
+    border-radius: inherit;
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.01) 10%, rgba(10, 10, 10, 0.46) 54%, rgba(10, 10, 10, 0.98) 100%);
     transition: opacity 0.3s ease;
 }
 
 .portfolio-item-project .portfolio-card::after {
-    background: linear-gradient(180deg, rgba(10, 10, 10, 0.01) 40%, rgba(10, 10, 10, 0.88) 100%);
+    background: linear-gradient(180deg, rgba(10, 10, 10, 0.01) 14%, rgba(10, 10, 10, 0.42) 52%, rgba(10, 10, 10, 0.98) 100%);
 }
 
 .portfolio-card-overlay {
@@ -319,6 +336,7 @@ footer {
 .project-preview img {
     width: 100%;
     height: 100%;
+    border-radius: inherit;
     object-fit: cover;
     object-position: center;
     transition: transform 0.45s ease;
@@ -333,18 +351,6 @@ footer {
 .portfolio-item-project {
     flex-basis: calc(50% - 0.5rem);
     max-width: calc(50% - 0.5rem);
-}
-
-.portfolio-item-project .portfolio-card {
-    background: #050505;
-}
-
-.portfolio-item-project[data-title="Sinuts Store"] .portfolio-card {
-    background: #e7d0bf;
-}
-
-.portfolio-item-project[data-title="EasyBuy Landing"] .portfolio-card {
-    background: #f2f0ec;
 }
 
 .portfolio-item-project .portfolio-card > img {
@@ -440,6 +446,7 @@ footer {
     gap: 1rem;
     list-style: none;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .skill-item {
@@ -452,33 +459,41 @@ footer {
     width: 72px;
     height: 72px;
     border-radius: 22px;
-    border: 1px solid var(--border);
-    background: var(--surface);
+    background: transparent;
+    overflow: hidden;
 }
 
-.skill-icon-ai,
-.skill-icon-ae {
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+.skill-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
 }
 
-.skill-icon-ai {
-    color: #ff9d57;
+.skill-icon-ux {
+    background: linear-gradient(135deg, rgba(15, 33, 22, 0.95), rgba(17, 22, 18, 0.95));
+}
+
+.skill-icon-ux img {
+    object-fit: contain;
+    padding: 10px;
+    filter: brightness(0) saturate(100%) invert(82%) sepia(26%) saturate(623%) hue-rotate(88deg) brightness(97%) contrast(95%);
+}
+
+.skill-icon-illustrator {
     background: linear-gradient(135deg, rgba(43, 27, 14, 0.95), rgba(22, 18, 14, 0.95));
 }
 
-.skill-icon-ae {
-    color: #c59dff;
+.skill-icon-after-effects {
     background: linear-gradient(135deg, rgba(26, 18, 43, 0.95), rgba(18, 14, 32, 0.95));
 }
 
-.skill-icon-ui {
-    color: #7be39d;
-    font-size: 1.35rem;
-    font-weight: 700;
-    letter-spacing: 0;
-    background: linear-gradient(135deg, rgba(15, 33, 22, 0.95), rgba(17, 22, 18, 0.95));
+.skill-icon-photoshop {
+    background: linear-gradient(135deg, rgba(12, 34, 64, 0.96), rgba(11, 22, 44, 0.96));
+}
+
+.skill-icon-figma {
+    background: linear-gradient(135deg, rgba(38, 18, 28, 0.96), rgba(24, 16, 20, 0.96));
 }
 
 .info-gallery {
@@ -789,15 +804,15 @@ body.modal-open {
     }
 
     .nav-menu li {
-        width: min(220px, calc(100vw - 32px));
+        width: auto;
         margin-left: auto;
     }
 
     .nav-menu a {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: flex-start;
-        width: 100%;
+        width: auto;
         padding: 0.85rem 1rem;
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 16px;
@@ -807,6 +822,7 @@ body.modal-open {
         font-size: 0.96rem;
         letter-spacing: 0.01em;
         backdrop-filter: blur(16px);
+        white-space: nowrap;
     }
 
     .nav-menu a:hover {
