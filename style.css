@@ -383,7 +383,7 @@ footer {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
     gap: 2.2rem;
-    align-items: stretch;
+    align-items: start;
 }
 
 .info-text {
@@ -460,18 +460,14 @@ footer {
 }
 
 .info-gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-        "top top"
-        "left right"
-        "bottom bottom";
-    grid-template-rows: auto auto auto;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    height: 100%;
-    align-items: stretch;
+    height: var(--info-gallery-height, auto);
+    max-height: var(--info-gallery-height, none);
     content-visibility: auto;
     contain-intrinsic-size: 720px;
+    overflow: hidden;
 }
 
 .info-photo {
@@ -483,23 +479,14 @@ footer {
 }
 
 .info-photo-top {
-    grid-area: top;
-    aspect-ratio: 16 / 7;
+    flex: 0 0 auto;
+    aspect-ratio: 16 / 9;
 }
 
-.info-photo-left {
-    grid-area: left;
-    aspect-ratio: 4 / 5;
-}
-
-.info-photo-right {
-    grid-area: right;
-    aspect-ratio: 4 / 5;
-}
-
-.info-photo-bottom {
-    grid-area: bottom;
-    aspect-ratio: 16 / 7;
+.info-photo-tall {
+    flex: 1 1 auto;
+    min-height: 0;
+    object-position: center top;
 }
 
 body.modal-open {
@@ -786,11 +773,8 @@ body.modal-open {
     }
 
     .info-gallery {
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas:
-            "top top"
-            "left right"
-            "bottom bottom";
+        height: auto;
+        max-height: none;
         min-height: auto;
     }
 
@@ -846,23 +830,16 @@ body.modal-open {
     }
 
     .info-gallery {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "top"
-            "left"
-            "right"
-            "bottom";
-        grid-template-rows: repeat(4, auto);
+        height: auto;
+        max-height: none;
         gap: 0.8rem;
     }
 
-    .info-photo-top,
-    .info-photo-bottom {
+    .info-photo-top {
         aspect-ratio: 16 / 9;
     }
 
-    .info-photo-left,
-    .info-photo-right {
+    .info-photo-tall {
         aspect-ratio: 4 / 5;
     }
 

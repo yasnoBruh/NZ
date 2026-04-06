@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalTitle = document.querySelector('.portfolio-modal-title');
     const modalCaption = document.querySelector('.portfolio-modal-caption');
     const modalScroll = document.querySelector('.portfolio-modal-scroll');
+    const infoText = document.querySelector('.info-text');
+    const infoGallery = document.querySelector('.info-gallery');
 
     let isAnimating = false;
 
@@ -213,6 +215,21 @@ document.addEventListener('DOMContentLoaded', function() {
         modalClose.addEventListener('click', closeModal);
     }
 
+    function syncInfoGalleryHeight() {
+        if (!infoText || !infoGallery) {
+            return;
+        }
+
+        if (window.innerWidth <= 768) {
+            infoGallery.style.removeProperty('--info-gallery-height');
+            return;
+        }
+
+        infoGallery.style.setProperty('--info-gallery-height', infoText.offsetHeight + 'px');
+    }
+
+    syncInfoGalleryHeight();
+
     window.addEventListener('resize', function() {
         if (window.innerWidth > 768 && burger && navMenu) {
             burger.classList.remove('active');
@@ -221,7 +238,17 @@ document.addEventListener('DOMContentLoaded', function() {
             burger.setAttribute('aria-label', 'Открыть меню');
             document.body.style.overflow = 'auto';
         }
+
+        syncInfoGalleryHeight();
     });
+
+    if (window.ResizeObserver && infoText) {
+        const infoResizeObserver = new ResizeObserver(function() {
+            syncInfoGalleryHeight();
+        });
+
+        infoResizeObserver.observe(infoText);
+    }
 
     window.addEventListener('scroll', function() {
         if (!header) {
